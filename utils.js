@@ -9,7 +9,7 @@ const fs = require('fs')
 const formattedTime = () => {
     const d = new Date()
     // 这里需要注意, js 中 month 是从 0 开始计算的, 所以要加 1
-    const year = d.getYear()
+    const year = d.getFullYear()
     const month = d.getMonth() + 1
     const date = d.getDate()
     const hours = d.getHours()
