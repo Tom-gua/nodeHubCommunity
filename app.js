@@ -1,0 +1,48 @@
+/**
+ * Created by liteng on 2017/6/13.
+ */
+const express = require('express')
+const nunjucks = require('nunjucks')
+const bodyParser = require('body-parser')
+const session = require('cookie-session')
+
+const {log} = require('./utils')
+
+const app = express()
+
+// 设置 bodyParser
+// application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({
+    extended: false,
+}))
+
+// 设置 bodyParser 解析 json 格式的数据
+app.use(bodyParser.json())
+
+
+// 配置 nunjucks 模板, 第一个参数是模板文件的路径
+// nunjucks.configure 返回的是一个 nunjucks.Environment 实例对象
+const env = nunjucks.configure('templates', {
+    autoescape: true,
+    express: app,
+    noCache: true,
+})
+
+// 把逻辑放在单独的函数中, 这样可以方便地调用
+// 指定了默认的 host 和 port, 因为用的是默认参数, 当然可以在调用的时候传其他的值
+const run = (port=3000, host='') => {
+    // app.listen 方法返回一个 http.Server 对象, 这样使用更方便
+    const server = app.listen(port, host, () => {
+        const address = server.address()
+        host = address.address
+        port = address.port
+        log(`listening server at http://${host}:${port}`)
+    })
+}
+
+if (require.main === module) {
+    const port = 2333
+    // host 参数指定为 '0.0.0.0' 可以让别的机器访问你的代码
+    const host = '0.0.0.0'
+    run(port, host)
+}
