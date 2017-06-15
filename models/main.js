@@ -2,6 +2,7 @@
  * Created by liteng on 2017/6/14.
  */
 const fs = require('fs')
+const {log} = require('../utils')
 
 const ensureExists = (path) => {
     if (!fs.existsSync(path)) {
@@ -26,7 +27,6 @@ const load = (path) => {
 }
 
 class Model {
-
     static dbPath() {
         const classname = this.name.toLowerCase()
         const path = require('path')
@@ -46,6 +46,7 @@ class Model {
         })
         return m
     }
+
     static all() {
         const path = this.dbPath()
         const models = load(path)
@@ -57,15 +58,51 @@ class Model {
         return ms
     }
 
+    // 创建
     static create(form={}, kwargs={}) {
         const cls = this
         const instance = new cls(form)
         // 额外设置 instance 属性
-        Object.keys(kwargs),forEach((k) => {
+        Object.keys(kwargs).forEach((k) => {
             instance[k] = kwargs[k]
         })
         instance.save()
         return instance
+    }
+
+    // 删除
+    static remove(id) {
+        const cls = this
+        const models = cls.all()
+        const index = models.findIndex((e) => {
+            return e.id === id
+        })
+        if(index > -1) {
+            models.splice(index, 1)
+        }
+        const path = cls.dbPath()
+        save(models, path)
+    }
+
+    // 查找所有
+    static find(key, value) {
+        const all = this.all()
+        const models = all.filter((m) => {
+            return m[key] === value
+        })
+        return models
+    }
+
+    // 查找一个
+    static findOne(key ,value) {
+        const all = this.all()
+        let m = all.find((m) => {
+            return m[key] === value
+        })
+        if(m === undefined) {
+            m = null
+        }
+        return m
     }
 
     save() {
@@ -93,6 +130,23 @@ class Model {
         const path = cls.dbPath()
         save(models, path)
     }
+
+    // 重新写了 toString 方法，这样是为了方便 log
+    toString() {
+        const s = JSON.stringify(this, null, 2)
+        return s
+    }
 }
 
+const test = () => {
+    log('测试开始')
+}
+
+// 当 nodejs 直接运行一个文件时, require.main 会被设为它的 module
+// 所以可以通过如下检测确定一个文件是否直接运行
+if (require.main === module) {
+    test()
+}
+
+module.exports = Model
 
