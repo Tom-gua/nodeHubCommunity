@@ -1,9 +1,9 @@
 /**
  * Created by liteng on 2017/6/15.
  */
-const Model = require('main')
+const Model = require('./main')
 const crypto = require('crypto')
-
+const {log} = require('../utils')
 class User extends Model{
     constructor(form={}) {
         super()
@@ -51,4 +51,41 @@ class User extends Model{
             return null
         }
     }
+
+    // 登陆
+    static login(form={}) {
+        const { username, password } = form
+        const pwd = this.saltedPassword(password)
+        const user = User.findOne('username', username)
+        return user !== null && user.password === pwd
+    }
+    // 是否是管理员
+    static isAdmin() {
+        return this.id === 1
+    }
 }
+
+const test = () => {
+    // const u1 = User.findBy('username', 'gua')
+    // const u2 = User.findBy({
+    //     username: 'gua',
+    // })
+    // console.log('debug u1', u1)
+    // console.log('debug u2', u2)
+    const form = {
+        username: 'tom',
+        password: '12345',
+        note: 'py',
+    }
+    // User.create(form)
+    const u = User.login(form)
+    console.log('debug u', u)
+}
+
+// 当 nodejs 直接运行一个文件时, require.main 会被设为它的 module
+// 所以可以通过如下检测确定一个文件是否直接运行
+if (require.main === module) {
+    test()
+}
+
+module.exports = User

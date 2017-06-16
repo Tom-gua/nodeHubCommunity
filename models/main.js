@@ -93,6 +93,9 @@ class Model {
         return models
     }
 
+    static get(id) {
+        return this.findOne('id', id)
+    }
     // 查找一个
     static findOne(key ,value) {
         const all = this.all()
