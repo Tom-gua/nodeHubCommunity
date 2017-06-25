@@ -1,0 +1,36 @@
+body{
+    font-size: 100px;
+    margin: 0;
+}
+.main{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+/*@media screen and (min-width: 500px){*/
+    /*.background{*/
+        /*background: url("../images/back2.jpeg") no-repeat 5px 5px;*/
+        /*background-size: cover;*/
+    /*}*/
+/*}*/
+/*@media screen and (max-width: 1000px){*/
+    /*.background{*/
+        /*background: url("../images/back2.jpeg") no-repeat 5px 5px;*/
+        /*background-size: 100%;*/
+    /*}*/
+/*}*/
+.background{
+    background: url("../images/back2.jpeg") no-repeat;
+    background-size: 100%;
+}
+.main a {
+    height: 8rem;
+    text-decoration: none;
+    color: white;
+}
+a:hover{
+    cursor: pointer;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <link href="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/login.css">
+</head>
+<body>
+    {% if (flash | length) > 0 %}
+    <p>{{ flash.message }}</p>
+    {% endif %}
+    <div class="main background">
+        <form class="login-form" action="/login" method="post">
+            <input type="hidden" name="next_url" value="{{next_url}}">
+            <div class="form-group">
+                <label>用户名</label>
+                <input type="text" class="username input" name="username">
+            </div>
+            <div class="form-group">
+                <label>密码</label>
+                <input type="password" class="password input" name="password">
+            </div>
+            <button type="submit" class="btn btn-danger login-button" >登陆</button>
+        </form>
+    </div>
+</body>
+</html>

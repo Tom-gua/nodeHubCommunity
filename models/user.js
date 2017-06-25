@@ -59,6 +59,16 @@ class User extends Model{
         const user = User.findOne('username', username)
         return user !== null && user.password === pwd
     }
+
+    validateAuth(form) {
+        const cls = this.constructor
+        const { username, password } = form
+        console.log('uuuuu',username, password)
+        const pwd = cls.saltedPassword(password)
+        const usernameEquals = this.username === username
+        const passwordEquals = this.password === pwd
+        return usernameEquals && passwordEquals
+    }
     // 是否是管理员
     static isAdmin() {
         return this.id === 1

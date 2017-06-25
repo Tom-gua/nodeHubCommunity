@@ -7,7 +7,7 @@ const bodyParser = require('body-parser')
 const session = require('cookie-session')
 
 const {log} = require('./utils')
-
+const { secretKey } = require('./config')
 const app = express()
 
 // 设置 bodyParser
@@ -19,6 +19,10 @@ app.use(bodyParser.urlencoded({
 // 设置 bodyParser 解析 json 格式的数据
 app.use(bodyParser.json())
 
+// 设置 session, 这里的 secretKey 是从 config.js 文件中拿到的
+app.use(session({
+    secret: secretKey,
+}))
 
 // 配置 nunjucks 模板, 第一个参数是模板文件的路径
 // nunjucks.configure 返回的是一个 nunjucks.Environment 实例对象
@@ -27,6 +31,48 @@ const env = nunjucks.configure('templates', {
     express: app,
     noCache: true,
 })
+
+
+env.addFilter('topicUT', (id) => {
+    // 引入自定义的过滤器 filter
+    const {topicUT} = require('./filter/filter')
+    const s = topicUT(id)
+    return s
+})
+env.addFilter('lastContent', (id) => {
+    // 引入自定义的过滤器 filter
+    const {lastContent} = require('./filter/filter')
+    const s = lastContent(id)
+    return s
+})
+env.addFilter('topicTotals', (id) => {
+    // 引入自定义的过滤器 filter
+    const {topicTotals} = require('./filter/filter')
+    const s = topicTotals(id)
+    return s
+})
+// 配置静态资源文件, 比如 js css 图片
+const asset = __dirname + '/static'
+app.use('/static', express.static(asset))
+
+app.use((request, response, next) => {
+    // response.locals 会把数据传到页面中
+    // 这里的处理方式是先把 flash 数据放在 session 中
+    // 然后把 flash 里面的数据放在 response.locals 中
+    // 接着删除 response.session 中的 flash 数据,
+    // 这样只会在当前这次请求中使用 flash 数据
+    response.locals.flash = request.session.flash
+    // obj = { a: '123' }
+    // obj.a = null
+    // delete obj.a
+    delete request.session.flash
+    next()
+})
+
+const index = require('./routes/index')
+const topic = require('./routes/topic')
+app.use('/', index)
+app.use('/topic', topic)
 
 // 把逻辑放在单独的函数中, 这样可以方便地调用
 // 指定了默认的 host 和 port, 因为用的是默认参数, 当然可以在调用的时候传其他的值
