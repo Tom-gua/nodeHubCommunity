@@ -1,10 +1,11 @@
 body{
    margin: 0 !important;
-    background-size: cover;
-    background: url("../images/back4.jpeg");
 }
 .main{
+    background-size: 100% 100%;
+    background: url(../images/topic_back.jpg)100% no-repeat;
     position: absolute;
+    background-size: 100% 100%;
     width: 100%;
     height: 100%;
 }
@@ -40,7 +41,6 @@ body{
 }
 .main .left-body{
     width: 100%;
-    border-top: 4px solid lightgray;
 }
 .main  .setting img{
     margin-right: 15px;
@@ -84,6 +84,7 @@ body{
     text-align: center;
     position: relative;
     width: 100%;
+    top: 30px;
     border-top: 4px solid #FF8888;
 }
 .search input{
@@ -119,9 +120,13 @@ body{
     bottom: 15px;
 }
 .left-body .contents{
+    background: #333333;
+    opacity: 0.4;
+    border-radius: 5px;
     width: 100%;
     height: 100%;
 }
+
 .contents .content-head{
     color: white;
     font:bolder;
@@ -134,18 +139,44 @@ body{
     align-items: center;
 }
 .contents .content-body{
-    border-bottom: 2px solid lightgray;
-    height: 20%;
+    color: #ffffff;
     display: flex;
-    justify-content: space-around;
+    margin: 10px 0 10px 10px ;
+    width: 97%;
+    position: absolute;
+    justify-content: flex-start;
     align-items: center;
 }
+.tab-pane{
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0 10px 20px;
+}
+.tabbable{
+    position: relative;
+    width: 100%;
+}
+
 .contents .content-body a {
     width: 30%;
     text-align: center;
     overflow: hidden;
 }
-
+.tab-pane:hover{
+    color: black;
+    cursor: pointer;
+    background: white;
+}
+.tabPane{
+    text-align: center;
+    height: 28px;
+    width: 65px;
+    border-radius: 5px;
+    border: 1px solid white;
+}
+.tabPane a{
+    color: white !important;
+}
 .community-name{
     padding: 10px;
 }
@@ -170,12 +201,19 @@ body{
     height: 128px;
 }
 .head-body{
-    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: #FFFF00;
+    width: 70%;
     position: relative;
+    text-align: center;
+    margin-bottom: 10px;
+    background: #333333;
+    opacity: 0.4;
 }
 .gua-word{
     position: relative;
-    top:-25px;
+    top: 20%;
     width: 100%;
     font-family: cursive;
     font-size: 30px;
@@ -187,10 +225,4 @@ body{
 }
 .hotTopic{
     margin-bottom:50px;
-}
-.content-body:nth-child(odd){
-    background-color: #F0F8FF;
-}
-.content-body:nth-child(even){
-    background-color: white;
 }

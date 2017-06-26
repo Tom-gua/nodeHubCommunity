@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Topic</title>
-    <link href="http://cdn.bootcss.com/pure/1.0.0/forms-min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
     <!--<link href="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">-->
     <link rel="stylesheet" href="../../static/css/topic_index.css">
 </head>
@@ -11,7 +11,7 @@
 <div class="main">
     <div class="head">
         <div class="head-body">
-            <blockquote class="gua-word"> 掏粪的奥秘充满了艺术和灵魂 !<div class="quote">- - -萧瓜</div> </blockquote>
+            <blockquote class="gua-word"> 掏粪的奥秘充满了艺术和灵魂!</blockquote>
         </div>
         <div class="setting">
             <img class="img-setting" src="../../static/images/setting.png">
@@ -21,39 +21,44 @@
     </div>
     <div class="body">
         <div class="left-body">
-            <div class="board common">
-                <span class="title">WELCOME TO FORUM</span>
-                <form class="pure-form search-form">
-                    <input type="text" class="pure-input-rounded search-input" placeholder="请输入您要搜索的内容...">
-                </form>
-            </div>
             <div class="contents">
-                <div class="content-head">
-                    <span>FORUM</span>
-                    <span>LATEST TOPICS</span>
-                    <span>TOTAL TOPICS</span>
-                    <span>FRESHNESS</span>
-                </div>
-                {% for b in boards %}
+
                     <div class="content-body">
-                        <a href="/topic?board_id={{ b.id }}">
-                            {{ b.title }}
-                        </a>
-                        <a>{{b.id | lastContent}}</a>
-                        <a>{{b.id | topicTotals}}</a>
-                        <a>{{b.id | topicUT}}</a>
+
+                        <div class="tabbable"> <!-- Only required for left/right tabs -->
+                            <ul class="nav nav-tabs">
+                                {% for b in boards %}
+                                    {% if b.id == board_id %}
+                                        {% set cls = 'active' %}
+                                    {% else %}
+                                        {% set cls = '' %}
+                                    {% endif %}
+                                    <li class=" tabPane {{  cls }}"><a href="/topic?board_id={{ b.id }}">{{ b.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                            <div class="tab-content">
+                                {% for b in boards %}
+                                    {% if b.id == board_id %}
+                                        {% set cls = 'active' %}
+                                    {% else %}
+                                        {% set cls = '' %}
+                                    {% endif %}
+                                <div class="tab-pane {{ cls }}" id=`tab{{b.id}}`>
+                                    <a>{{b.id | lastContent}}</a>
+                                    <a>{{b.id | topicTotals}}</a>
+                                    <a>{{b.id | topicUT}}</a>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
                     </div>
-                {% endfor %}
+
             </div>
         </div>
         <div class="right-body">
             <div class="top-decoration hotTopic">
-                <div class="community-name">热 点 话 题</div>
-                <div class="community">
-                    <a  href="https://vip.cocode.cc" >炼瓜所</a>
-                    <a  href="http://www.ruanyifeng.com/home.html" >阮一峰个人博客</a>
-                    <a  href="http://www.yinwang.org" >王垠个人博客</a>
-                </div>
+
             </div>
             <div class="top-decoration">
                 <div class="community-name">友 情 社 区</div>
