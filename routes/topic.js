@@ -9,10 +9,17 @@ const { currentUser, loginRequired } = require('./main')
 // 使用 express.Router 可以创建模块化的路由
 // 类似我们以前实现的形式
 const topic = express.Router()
-
+const topicsByBoard_id = (board_id) => {
+    if(board_id === 1){
+        // 全部
+        return Topic.all(-1)
+    }else {
+        return Topic.allList(board_id)
+    }
+}
 topic.get('/', (request, response) => {
     const board_id = Number(request.query.board_id || -1)
-    let ms = Topic.allList(board_id)
+    const ms = topicsByBoard_id(board_id)
     // if (board_id === -1) {
     //     ms = Topic.all()
     // } else {

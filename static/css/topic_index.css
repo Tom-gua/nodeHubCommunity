@@ -76,8 +76,7 @@ body{
 }
 .main .body .right-body .top-decoration{
     border-radius: 4px;
-    background: #333333;
-    opacity: 0.4;
+    background: rgba(0,0,0,0.4);
     text-align: center;
     position: relative;
     width: 100%;
@@ -116,8 +115,7 @@ body{
     bottom: 15px;
 }
 .left-body .contents{
-    background: #333333;
-    opacity: 0.4;
+    background: rgba(0,0,0,0.4);
     border-radius: 5px;
     width: 100%;
     height: 95%;
@@ -217,8 +215,7 @@ body{
     margin-left: 30px;
 }
 .gua-word{
-    background: #333333;
-    opacity:0.5;
+    background: rgba(0,0,0,0.4);
     display: flex;
     float: right;
     justify-content: space-between;
@@ -255,7 +252,11 @@ body{
 .systems-setting{
     margin-right: 2%;
 }
+.systems-setting a{
+    color: white!important;
+}
 .systems-setting a:hover{
+    text-decoration: none;
     cursor: pointer;
 }
 .search-form input{

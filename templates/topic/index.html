@@ -19,8 +19,8 @@
                 <span>掏粪的奥秘充满了艺术和灵魂!</span>
                 <div class="systems-setting">
                     <a>关于</a>
-                    <a>登陆</a>
-                    <a>注册</a>
+                    <a href="/login?next_url=/topic">登陆</a>
+                    <a  href="/register">注册</a>
                 </div>
             </div>
         </div>
@@ -28,13 +28,11 @@
     <div class="body">
         <div class="left-body">
             <div class="contents">
-
                     <div class="content-body">
-
                         <div class="tabbable"> <!-- Only required for left/right tabs -->
                             <ul class="nav nav-tabs">
                                 {% for b in boards %}
-                                    {% if b.id == board_id %}
+                                    {% if b.id == board_id  %}
                                         {% set cls = 'active' %}
                                     {% else %}
                                         {% set cls = '' %}
@@ -43,23 +41,29 @@
                                 {% endfor %}
                             </ul>
                             <div class="tab-content">
-                                {% for b in boards %}
-                                    {% if b.id == board_id %}
-                                        {% set cls = 'active' %}
-                                    {% else %}
-                                        {% set cls = '' %}
+                                {% for b in topics %}
+                                    {% if board_id !== 1 %}
+                                        {% if b.board_id == board_id %}
+                                            {% set cls = 'active' %}
+                                        {% else %}
+                                ￼              {% set cls = '' %}
+                                        {% endif %}
+                                        <div class="tab-pane {{ cls }}" id=`tab{{b.id}}`>
+                                            <a>{{b.title}}</a>
+                                            <a>{{b.user_id}}</a>
+                                        </div>
                                     {% endif %}
-                                <div class="tab-pane {{ cls }}" id=`tab{{b.id}}`>
-                                    <a>{{b.id | lastContent}}</a>
-                                    <a>{{b.id | topicTotals}}</a>
-                                    <a>{{b.id | topicUT}}</a>
-                                </div>
+                                    {% if board_id === 1 %}
+                                        {% set cls = 'active' %}
+                                        <div class="tab-pane {{ cls }}" id=`tab{{b.id}}`>
+                                               <a>{{b.title}}</a>
+                                               <a>{{b.user_id}}</a>
+                                        </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                         </div>
-
                     </div>
-
             </div>
         </div>
         <div class="right-body">
