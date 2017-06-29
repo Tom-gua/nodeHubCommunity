@@ -49,15 +49,19 @@
                                 ￼              {% set cls = '' %}
                                         {% endif %}
                                         <div class="tab-pane {{ cls }}" id=`tab{{b.id}}`>
+                                            <a>{{b.board_id}}</a>
                                             <a>{{b.title}}</a>
                                             <a>{{b.user_id}}</a>
+                                            <a>{{b.ut}}</a>
                                         </div>
                                     {% endif %}
                                     {% if board_id === 1 %}
                                         {% set cls = 'active' %}
                                         <div class="tab-pane {{ cls }}" id=`tab{{b.id}}`>
+                                                <a>{{b.board_id}}</a>
                                                <a>{{b.title}}</a>
                                                <a>{{b.user_id}}</a>
+                                               <a>{{b.ut}}</a>
                                         </div>
                                     {% endif %}
                                 {% endfor %}
