@@ -58,7 +58,7 @@
                                     {% if board_id === 1 %}
                                         {% set cls = 'active' %}
                                         <div class="tab-pane {{ cls }}" id=`tab{{b.id}}`>
-                                                <a>{{b.board_id}}</a>
+                                               <a>{{b.board_id}}</a>
                                                <a>{{b.title}}</a>
                                                <a>{{b.user_id}}</a>
                                                <a>{{b.ut}}</a>
@@ -72,13 +72,31 @@
         </div>
         <div class="right-body">
             <div class="top-decoration person">
-
+                {% if user.id === -1 %}
+                    <img src="../../static/images/person.png" class="img-circle">
+                    <div class="person-message">您当前还未登陆，您可以选择 <a href="/login?next_url=/topic">登陆</a>或者
+                        <a  href="/register">注册</a></div>
+                {% else %}
+                    <img src="../../static/images/setting22.png" class="image-setting">
+                    <img src="../../static/images/person.png" class="img-circle">
+                    <div class="person-message currentUser">当前用户:{{user.username}}</div>
+                {% endif %}
             </div>
             <div class="top-decoration hotTopic">
-
+                <div class="community-title">热点话题</div>
+                <div class="community">
+                    {% for b in hotTopics %}
+                        <div class="hotTopicTitle">{{b.title}}</div>
+                    {% endfor %}
+                </div>
             </div>
             <div class="top-decoration hotTopic">
-
+                <div class="community-title">友情社区</div>
+                <div class="community">
+                    <a  href="https://vip.cocode.cc" >炼瓜所</a>
+                    <a  href="http://www.ruanyifeng.com/home.html" >阮一峰个人博客</a>
+                    <a  href="http://www.yinwang.org" >王垠个人博客</a>
+                </div>
             </div>
         </div>
     </div>

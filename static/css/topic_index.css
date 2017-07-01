@@ -39,7 +39,7 @@ body{
 .main  .setting img{
     margin-right: 15px;
 }
-.setting img:hover{
+.setting img:hover,.person .image-setting:hover{
     cursor: pointer;
 }
 .img-setting{
@@ -80,7 +80,7 @@ body{
     text-align: center;
     position: relative;
     width: 100%;
-    height: 35%;
+    height: 32%;
 }
 .search input{
     width: 100%;
@@ -121,8 +121,8 @@ body{
     height: 95%;
 }
 .right-body .person{
-    height: 20% !important;
-    margin-bottom: 5%;
+    height: 25% !important;
+    margin-bottom: 25px;
 }
 .contents .content-head{
     color: white;
@@ -189,18 +189,27 @@ body{
     display: block;
 }
 .community{
-    margin-top: 20px;
+    margin-top: 5px;
     position: relative;
     width: 90%;
     left: 7%;
     height: 128px;
 }
 .community a{
+    width: 100%;
+    border-radius: 4px;
+    padding: 3px;
     color: white !important;
 }
+.community-title {
+    position: relative;
+    width: 100%;
+    color: white!important;
+    right: 33%;
+    top:3%;
+}
 .community a:hover{
-    border-radius: 5px;
-    color: black;
+    color: black !important;
     cursor: pointer;
     background: white;
 }
@@ -215,7 +224,7 @@ body{
     margin-left: 30px;
 }
 .gua-word{
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.5);
     display: flex;
     float: right;
     justify-content: space-between;
@@ -241,10 +250,11 @@ body{
     right: 400px;
 }
 .hotTopic{
+    position: relative;
     margin-bottom:5%;
 }
 .nav .active a{
-    color: greenyellow !important;
+    color: lime !important;
 }
 .search-form{
     width: 20%;
@@ -282,4 +292,50 @@ body{
 }
 .top-decoration .community-div{
     margin-bottom: 0!important;
+}
+.person div{
+    left: 10%;
+    position: relative;
+    width: 80%;
+}
+
+.person a, .person div{
+    color: white!important;
+}
+.person a{
+    display: inline;
+}
+.person img{
+    width: 70px;
+    height: 70px;
+    margin: 10px;
+}
+.person .person-message a{
+    color: lightgoldenrodyellow !important;
+}
+.person .image-setting{
+    opacity: 1;
+    position: absolute;
+    right:0;
+    width: 25px;
+    height: 25px;
+}
+.person .currentUser{
+    overflow: hidden;
+    font-size: 20px;
+    margin-top: 15px;
+}
+.community .hotTopicTitle{
+    padding: 4px;
+    border-radius: 3px;
+    text-align: left;
+    position: relative;
+    color: darkorange;
+}
+.community .hotTopicTitle:nth-child(1){
+    margin-top: 10px;
+}
+.community .hotTopicTitle:hover{
+    cursor: pointer;
+    background: white;
 }

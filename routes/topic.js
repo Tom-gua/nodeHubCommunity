@@ -9,6 +9,35 @@ const { currentUser, loginRequired } = require('./main')
 // 使用 express.Router 可以创建模块化的路由
 // 类似我们以前实现的形式
 const topic = express.Router()
+
+const quickSort = function(arr) {
+    if (arr.length <= 1) {
+        return arr
+    }
+    let pivotIndex = Math.floor(arr.length / 2);
+    let pivot = arr.splice(pivotIndex, 1)[0];
+    let view = pivot.view
+    let left = [];
+    let right = [];
+    for (let i = 0; i < arr.length; i++){
+        const topic = arr[i]
+        if (topic.view < view) {
+            left.push(topic);
+        } else {
+            right.push(topic);
+        }
+    }
+    // 递归执行
+    return quickSort(left).concat([pivot], quickSort(right));
+};
+
+// 获得热点话题
+const hotTopic = () => {
+    const all = topicsByBoard_id(-1)
+    const TopicBySort = quickSort(all)
+    const topics = TopicBySort.slice(0, 5)
+    return topics
+}
 const topicsByBoard_id = (board_id) => {
     if(board_id === 1){
         // 全部
@@ -20,14 +49,12 @@ const topicsByBoard_id = (board_id) => {
 topic.get('/', (request, response) => {
     const board_id = Number(request.query.board_id || -1)
     const ms = topicsByBoard_id(board_id)
-    // if (board_id === -1) {
-    //     ms = Topic.all()
-    // } else {
-    //     ms = Topic.find('board_id', board_id)
-    // }
-    // const ms = Model.all(board_id)
     const boards = Board.all()
+    const user = currentUser(request)
+    const hotTopics = hotTopic()
     const args = {
+        hotTopics: hotTopics,
+        user: user,
         topics: ms,
         boards: boards,
         board_id: board_id,
