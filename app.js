@@ -33,24 +33,13 @@ const env = nunjucks.configure('templates', {
 })
 
 
-env.addFilter('topicUT', (id) => {
+env.addFilter('formattedTime', (ut) => {
     // 引入自定义的过滤器 filter
-    const {topicUT} = require('./filter/filter')
-    const s = topicUT(id)
+    const {formattedTime} = require('./filter/filter')
+    const s = formattedTime(ut)
     return s
 })
-env.addFilter('lastContent', (id) => {
-    // 引入自定义的过滤器 filter
-    const {lastContent} = require('./filter/filter')
-    const s = lastContent(id)
-    return s
-})
-env.addFilter('topicTotals', (id) => {
-    // 引入自定义的过滤器 filter
-    const {topicTotals} = require('./filter/filter')
-    const s = topicTotals(id)
-    return s
-})
+
 // 配置静态资源文件, 比如 js css 图片
 const asset = __dirname + '/static'
 app.use('/static', express.static(asset))

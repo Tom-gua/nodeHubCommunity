@@ -34,7 +34,7 @@ class Topic extends Model{
         return ms
     }
 
-    static replies() {
+     replies() {
         const Reply = require('./reply')
         const ms = Reply.find('topic_id', this.id)
         return ms

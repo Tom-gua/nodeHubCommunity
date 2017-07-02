@@ -70,7 +70,7 @@ class User extends Model{
         return usernameEquals && passwordEquals
     }
     // 是否是管理员
-    static isAdmin() {
+    isAdmin() {
         return this.id === 1
     }
 }

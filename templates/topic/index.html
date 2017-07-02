@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Topic</title>
     <link href="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
-    <!--<link href="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">-->
+    <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../../static/css/topic_index.css">
 </head>
 <body>
@@ -16,7 +16,7 @@
                 <form class="navbar-search pull-left search-form">
                     <input type="text" class="search-query" placeholder="Search">
                 </form>
-                <span>掏粪的奥秘充满了艺术和灵魂!</span>
+                <span>掏粪的奥秘充满了艺术和灵魂 !</span>
                 <div class="systems-setting">
                     <a>关于</a>
                     <a href="/login?next_url=/topic">登陆</a>
@@ -39,6 +39,10 @@
                                     {% endif %}
                                     <li class=" tabPane {{  cls }}"><a href="/topic?board_id={{ b.id }}">{{ b.title }}</a></li>
                                 {% endfor %}
+                                {#  管理员有添加板块按钮 #}
+                                {% if admin == true  %}
+                                    <li class="board-add">添加</li>
+                                {% endif %}
                             </ul>
                             <div class="tab-content">
                                 {% for b in topics %}
@@ -48,23 +52,22 @@
                                         {% else %}
                                 ￼              {% set cls = '' %}
                                         {% endif %}
-                                        <div class="tab-pane {{ cls }}" id=`tab{{b.id}}`>
-                                            <a>{{b.board_id}}</a>
-                                            <a>{{b.title}}</a>
-                                            <a>{{b.user_id}}</a>
-                                            <a>{{b.ut}}</a>
+                                        <div class="tab-pane {{ cls }} topicItem" id=`tab{{b.id}}` data-id="{{b.id}}>
+                                            <div class="topic_title">{{b.title}}</div>
+                                            <a class="topic_updateTime">编辑于 {{b.ut | formattedTime}}</a>
                                         </div>
                                     {% endif %}
                                     {% if board_id === 1 %}
                                         {% set cls = 'active' %}
-                                        <div class="tab-pane {{ cls }}" id=`tab{{b.id}}`>
-                                               <a>{{b.board_id}}</a>
-                                               <a>{{b.title}}</a>
-                                               <a>{{b.user_id}}</a>
-                                               <a>{{b.ut}}</a>
+                                        <div class="tab-pane {{ cls }} topicItem" id=`tab{{b.id}}` data-id="{{b.id}}">
+                                                <div class="topic_title">{{b.title}}</div>
+                                                <a class="topic_updateTime">编辑于 {{b.ut | formattedTime}}</a>
                                         </div>
                                     {% endif %}
                                 {% endfor %}
+                            </div>
+                            <div class="pagination pagination-centered">
+
                             </div>
                         </div>
                     </div>
@@ -79,14 +82,14 @@
                 {% else %}
                     <img src="../../static/images/setting22.png" class="image-setting">
                     <img src="../../static/images/person.png" class="img-circle">
-                    <div class="person-message currentUser">当前用户:{{user.username}}</div>
+                    <div class="person-message currentUser">当前用户: {{user.username}}</div>
                 {% endif %}
             </div>
             <div class="top-decoration hotTopic">
                 <div class="community-title">热点话题</div>
                 <div class="community">
                     {% for b in hotTopics %}
-                        <div class="hotTopicTitle">{{b.title}}</div>
+                        <div class="topic_title hotTopicTitle ">{{b.title}}</div>
                     {% endfor %}
                 </div>
             </div>
@@ -102,4 +105,5 @@
     </div>
 </div>
 </body>
+<script src="../../static/js/topic/index.js"></script>
 </html>

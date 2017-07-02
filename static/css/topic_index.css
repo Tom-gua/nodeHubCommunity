@@ -39,7 +39,7 @@ body{
 .main  .setting img{
     margin-right: 15px;
 }
-.setting img:hover,.person .image-setting:hover{
+.setting img:hover,.person .image-setting:hover,.board-add:hover{
     cursor: pointer;
 }
 .img-setting{
@@ -188,6 +188,14 @@ body{
     text-align: center;
     display: block;
 }
+.topic_title{
+    display: inline-block;
+    position: relative;
+    width: 60%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
 .community{
     margin-top: 5px;
     position: relative;
@@ -231,7 +239,7 @@ body{
     align-items: center;
     border-radius: 5px;
     position: relative;
-    height: 80%;
+    height: 100%;
     width: 100%;
     font-family: cursive;
 }
@@ -326,6 +334,7 @@ body{
     margin-top: 15px;
 }
 .community .hotTopicTitle{
+    width: 100% !important;
     padding: 4px;
     border-radius: 3px;
     text-align: left;
@@ -339,3 +348,15 @@ body{
     cursor: pointer;
     background: white;
 }
+.board-add{
+    position: absolute;
+    right: 10px;
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 0 10px 0 10px;
+}
+.topic_updateTime{
+    position: absolute;
+    right: -20px;
+}
+

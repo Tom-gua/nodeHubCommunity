@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Topic</title>
+    <link href="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="../../static/css/topic_index.css">
+    <link rel="stylesheet" href="../../static/css/topic_detail.css">
+</head>
+<body>
+<div class="main">
+    <div class="head">
+        <div class="head-body">
+            <div class="gua-word">
+                <img src="../../static/images/javascript_1.png">
+                <form class="navbar-search pull-left search-form">
+                    <input type="text" class="search-query" placeholder="Search">
+                </form>
+                <span>掏粪的奥秘充满了艺术和灵魂 !</span>
+                <div class="systems-setting">
+                    <a>关于</a>
+                    <a href="/login?next_url=/topic">登陆</a>
+                    <a href="/register">注册</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="body">
+        <div class="topicMain">
+                <div class="topicHead">
+                    <div class="topicTitle">{{topic.title}}</div>
+                    <div class="topicInformation">
+                        <span><ul><li>发布于 {{ topic.ct | formattedTime }}</li></ul></span>
+                        <span>作者:<a href="/user/profile/{{ topic.user().id }}"> {{ topic.user().username }}</a></span>
+                        <span>{{ topic.views }} 次浏览</span>
+                        <span>
+                            {# topic.board() 拿到的是 board 实例 #}
+                            来自 {{ topic.board().title }}
+                        </span>
+                    </div>
+                </div>
+                <div class="topicBody">
+                    <div class="topicContent">{{topic.content}}</div>
+                </div>
+        </div>
+        <!--<div class="topicComments">-->
+            <!--<div class="commentLength">{{ topic.replies() | length }} 回复</div>-->
+            <!--<div class="commentBody">-->
+                <!--{% for r in topic.replies() %}-->
+                <!--<div class="commentAll">-->
+                    <!--<div class="commentUser">-->
+                        <!--<div>-->
+                            <!--<a class="user_avatar">-->
+                                <!--&lt;!&ndash;<img src="/user/avatar/{{ r.user().avatar }}" title="{{ r.user().username }}"/>&ndash;&gt;-->
+                                <!--{{ r.user().username }}-->
+                            <!--</a>-->
+                        <!--</div>-->
+                        <!--<span>-->
+                            <!--{{ loop.index }}楼-->
+                        <!--</span>-->
+                    <!--</div>-->
+                    <!--<div class="commentContent">-->
+                        <!--{{ r.content }}-->
+                    <!--</div>-->
+                    <!--<div class="commentTime">-->
+                        <!--{{r.ct | formattedTime}}-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--{% endfor %}-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="addComment">
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+/*.main .body .left-body{*/
+    /*width: 100%;*/
+/*}*/
+.main .body,.topicMain {
+    display: flex;
+    flex-direction: column;
+}
+.topicMain{
+  background:rgba(0,0,0,0.4);
+  border-radius: 4px;
+    color: white;
+    margin:0 30px 20px 30px;
+    position: relative;
+}
+.contents{
+    color: white;
+}
+.left-body{
+    margin-right: 30px!important;
+    width: 100% !important;
+}
+.topicHead{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid white;
+}
+.topicBody .topicContent{
+    word-wrap: break-word;
+}
+.topicHead .topicTitle{
+    margin-left: 21px;
+    font-size: 30px;
+    word-wrap: break-word;
+}
+.topicInformation{
+    display: flex;
+    justify-content: flex-start;
+}
+.topicInformation span {
+    margin-right: 10px;
+}
+.topicInformation a{
+    color: white !important;
+}
+.topicBody{
+    margin:21px;
+}

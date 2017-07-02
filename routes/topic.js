@@ -53,6 +53,7 @@ topic.get('/', (request, response) => {
     const user = currentUser(request)
     const hotTopics = hotTopic()
     const args = {
+        admin: user.isAdmin(),
         hotTopics: hotTopics,
         user: user,
         topics: ms,
@@ -65,15 +66,18 @@ topic.get('/', (request, response) => {
 
 topic.get('/detail/:id', (request, response) => {
     const id = Number(request.params.id)
+    log('id',id)
     // const t = Topic.findOne('id', id)
     // t.views += 1
     // t.save()
     // const args = {
     //     topic: t,
     // }
+    const user = currentUser(request)
     const m = Topic.get(id)
     const args = {
         topic: m,
+        user: user,
     }
     response.render('topic/detail.html', args)
 })
