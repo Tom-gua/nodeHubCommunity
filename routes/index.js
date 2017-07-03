@@ -27,7 +27,6 @@ index.get('/login', (request, response) => {
 index.post('/login', (request, response) => {
     const form = request.body
     const u = User.findOne('username', form.username)
-    log('form', u.validateAuth(form))
     if (u.validateAuth(form)) {
         // 直接指定 request.session 的 key, 然后通过这个 key 来获取设置的值
         request.session.uid = u.id

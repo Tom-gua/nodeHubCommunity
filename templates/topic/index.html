@@ -52,10 +52,10 @@
                                         {% else %}
                                 ￼              {% set cls = '' %}
                                         {% endif %}
-                                        <div class="tab-pane {{ cls }} topicItem" id=`tab{{b.id}}` data-id="{{b.id}}>
-                                            <div class="topic_title">{{b.title}}</div>
-                                            <a class="topic_updateTime">编辑于 {{b.ut | formattedTime}}</a>
-                                        </div>
+                                <div class="tab-pane {{ cls }} topicItem" id=`tab{{b.id}}` data-id="{{b.id}}">
+                                    <div class="topic_title">{{b.title}}</div>
+                                    <a class="topic_updateTime">编辑于 {{b.ut | formattedTime}}</a>
+                                </div>
                                     {% endif %}
                                     {% if board_id === 1 %}
                                         {% set cls = 'active' %}

@@ -5,7 +5,6 @@
     <title>Topic</title>
     <link href="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
     <!--<link href="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">-->
-    <link rel="stylesheet" href="../../static/css/topic_index.css">
     <link rel="stylesheet" href="../../static/css/topic_detail.css">
 </head>
 <body>
@@ -44,35 +43,34 @@
                     <div class="topicContent">{{topic.content}}</div>
                 </div>
         </div>
-        <!--<div class="topicComments">-->
-            <!--<div class="commentLength">{{ topic.replies() | length }} 回复</div>-->
-            <!--<div class="commentBody">-->
-                <!--{% for r in topic.replies() %}-->
-                <!--<div class="commentAll">-->
-                    <!--<div class="commentUser">-->
-                        <!--<div>-->
-                            <!--<a class="user_avatar">-->
-                                <!--&lt;!&ndash;<img src="/user/avatar/{{ r.user().avatar }}" title="{{ r.user().username }}"/>&ndash;&gt;-->
-                                <!--{{ r.user().username }}-->
-                            <!--</a>-->
-                        <!--</div>-->
-                        <!--<span>-->
-                            <!--{{ loop.index }}楼-->
-                        <!--</span>-->
-                    <!--</div>-->
-                    <!--<div class="commentContent">-->
-                        <!--{{ r.content }}-->
-                    <!--</div>-->
-                    <!--<div class="commentTime">-->
-                        <!--{{r.ct | formattedTime}}-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--{% endfor %}-->
-            <!--</div>-->
-        <!--</div>-->
-        <div class="addComment">
-
+        <div class="topicComments">
+            <div class="commentBodys">
+                {% for r in topic.replies() %}
+                <div class="commentAll">
+                    <div class="commentUser">
+                        <div>
+                            <a class="user_avatar">
+                                <!--<img src="/user/avatar/{{ r.user().avatar }}" title="{{ r.user().username }}"/>-->
+                                {{ r.user().username }}
+                            </a>
+                            <span>
+                            {{ loop.index }}楼
+                        </span>
+                        </div>
+                    </div>
+                    <div class="commentContent">
+                        {{ r.content }}
+                    </div>
+                    <div class="commentTime">
+                        {{r.ct | formattedTime}}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
+        <!--<div class="addComment">-->
+
+        <!--</div>-->
     </div>
 </div>
 </body>

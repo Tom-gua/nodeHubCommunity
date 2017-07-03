@@ -1,16 +1,65 @@
 /*.main .body .left-body{*/
     /*width: 100%;*/
 /*}*/
-.main .body,.topicMain {
+body{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    background-size: 100% 100%;
+    position: relative;
+    background: url("../images/topic_back.jpg")100% no-repeat;
+}
+.gua-word{
+    color: white;
+    position: relative;
+    justify-content: space-between;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: row;
+    margin: 0 30px 10px 30px;
+    border-radius: 4px;
+}
+.search-form{
+    width: 45%;
+    bottom: 15px;
+}
+.search-form input{
+    color: #666;
+    border: 0;
+    margin-top: 2px;
+    transition: all 0.5s;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-left: 10px;
+    border-radius: 20px;
+    width: 50%;
+}
+.main .body,.topicMain,.topicComments {
     display: flex;
     flex-direction: column;
 }
-.topicMain{
+.topicMain, .commentLength, .commentBodys{
   background:rgba(0,0,0,0.4);
   border-radius: 4px;
+    height: 100%;
     color: white;
     margin:0 30px 20px 30px;
     position: relative;
+}
+.commentLength{
+    height: 20%;
+    background: rgba(255, 251, 240, 0.4);
+    color: black;
+    margin: 0 30px 0 30px;
+}
+.commentAll{
+    position: relative;
+    border-bottom: 1px solid white;
 }
 .contents{
     color: white;
@@ -28,6 +77,9 @@
 }
 .topicBody .topicContent{
     word-wrap: break-word;
+}
+.topicComments{
+    /*top: -125px;*/
 }
 .topicHead .topicTitle{
     margin-left: 21px;
