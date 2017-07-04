@@ -14,7 +14,15 @@ var bindClickTopic = function() {
     $('.topicItem').on('click', function(e) {
         var id = e.target.dataset.id
         if(!id){
-         id = e.target.parentNode.dataset.id
+            id = e.target.parentNode.dataset.id
+        }
+        // 请求到详情页面
+        requestTopicDetailById(id)
+    })
+    $('.hotTopicTitle').on('click', function(e) {
+        var id = e.target.dataset.id
+        if(!id){
+            id = e.target.parentNode.dataset.id
         }
         // 请求到详情页面
         requestTopicDetailById(id)

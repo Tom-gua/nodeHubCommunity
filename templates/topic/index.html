@@ -89,7 +89,7 @@
                 <div class="community-title">热点话题</div>
                 <div class="community">
                     {% for b in hotTopics %}
-                        <div class="topic_title hotTopicTitle ">{{b.title}}</div>
+                        <div class="topic_title hotTopicTitle" data-id="{{b.id}}">{{b.title}}</div>
                     {% endfor %}
                 </div>
             </div>

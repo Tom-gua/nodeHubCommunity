@@ -1,101 +1,128 @@
-/*.main .body .left-body{*/
-    /*width: 100%;*/
-/*}*/
 body{
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    background: wheat;
 }
-.main{
-    display: flex;
-    flex-direction: column;
-    background-size: 100% 100%;
-    position: relative;
-    background: url("../images/topic_back.jpg")100% no-repeat;
-}
-.gua-word{
-    color: white;
-    position: relative;
-    justify-content: space-between;
-    background: rgba(0,0,0,0.4);
-    display: flex;
-    flex-direction: row;
-    margin: 0 30px 10px 30px;
+.main .gua-word{
+    background: rgba(147,128,110,0.5);
     border-radius: 4px;
-}
-.search-form{
-    width: 45%;
-    bottom: 15px;
-}
-.search-form input{
-    color: #666;
-    border: 0;
-    margin-top: 2px;
-    transition: all 0.5s;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    padding-left: 10px;
-    border-radius: 20px;
-    width: 50%;
-}
-.main .body,.topicMain,.topicComments {
-    display: flex;
-    flex-direction: column;
-}
-.topicMain, .commentLength, .commentBodys{
-  background:rgba(0,0,0,0.4);
-  border-radius: 4px;
-    height: 100%;
-    color: white;
-    margin:0 30px 20px 30px;
-    position: relative;
-}
-.commentLength{
-    height: 20%;
-    background: rgba(255, 251, 240, 0.4);
-    color: black;
     margin: 0 30px 0 30px;
-}
-.commentAll{
-    position: relative;
-    border-bottom: 1px solid white;
-}
-.contents{
     color: white;
-}
-.left-body{
-    margin-right: 30px!important;
-    width: 100% !important;
-}
-.topicHead{
-    position: relative;
-    width: 100%;
     display: flex;
-    flex-direction: column;
-    border-bottom: 1px solid white;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
 }
-.topicBody .topicContent{
-    word-wrap: break-word;
+.main .body{
+    overflow-wrap: break-word;
+    border-radius: 4px;
+    position: relative;
+    height: 100%;
+    width: 95%;
+    margin: 10px 30px 0 30px;
+    background: rgba(147,128,110,0.5);
+}
+.gua-word img{
+    position: relative;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+}
+.gua-word a{
+    color: white!important;
+}
+.gua-word .search-form{
+    width: 20%;
+}
+.gua-word input{
+    padding: 3px 5px 3px 15px;
+    position: relative;
+    right: 60%;
+    width: 100%;
+    border-radius: 20px;
+}
+.search-form input:focus {
+    outline:none;
+    border: 1px solid green;
+}
+.gua-word span{
+    position: relative;
+    right: 12%;
+    font-size: 22px;
+}
+.systems-setting{
+    position: relative;
+    right: 10px;
 }
 .topicComments{
-    /*top: -125px;*/
+    position: relative;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
 }
-.topicHead .topicTitle{
-    margin-left: 21px;
-    font-size: 30px;
-    word-wrap: break-word;
+.topicMain,.addComment,.topicComments{
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    color: white;
+}
+.addComment{
+    margin-bottom: 0;
+}
+.topicTitle{
+    margin: 20px 0 20px 20px;
 }
 .topicInformation{
-    display: flex;
-    justify-content: flex-start;
+    border-bottom: 1px solid white;
 }
-.topicInformation span {
-    margin-right: 10px;
-}
-.topicInformation a{
-    color: white !important;
+.topicInformation ul{
+    display: inline-block;
 }
 .topicBody{
-    margin:21px;
+    padding: 20px;
+    border-bottom: 1px solid white;
+}
+.addComment{
+    border-top: 1px solid white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid white;
+}
+.addComment textarea{
+    border-radius: 10px;
+    position: relative;
+    left: 10%;
+    width: 80%;
+    height: 180px;
+}
+.addComment button{
+    left: 10%;
+    position: relative;
+    width: 80%;
+}
+.addComment button:hover{
+    cursor: pointer;
+}
+.commentTime{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.commentBodys{
+    margin: 20px;
+    border-radius: 4px;
+    border: 2px solid white;
+}
+.commentAll{
+    border-bottom: 2px solid white;
+}
+.commentAll:last-child{
+    border-bottom: none;
+}
+.commentAll:hover{
+    cursor: pointer;
+    background: white;
+    color: black;
+    border-bottom: 2px solid white;
 }
