@@ -35,7 +35,7 @@ const quickSort = function(arr) {
 const hotTopic = () => {
     const all = topicsByBoard_id(-1)
     const TopicBySort = quickSort(all)
-    const topics = TopicBySort.slice(0, 5)
+    const topics = TopicBySort.slice(0, 3)
     return topics
 }
 const topicsByBoard_id = (board_id) => {
@@ -82,7 +82,7 @@ topic.get('/detail/:id', (request, response) => {
     response.render('topic/detail.html', args)
 })
 
-topic.get('/new', (request, response) => {
+topic.get('/new',loginRequired, (request, response) => {
     const boards = Board.all()
     const args = {
         boards: boards,

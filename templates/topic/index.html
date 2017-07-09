@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Topic</title>
+    <link href="http://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
     <link href="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://cdn.bootcss.com/sweetalert/1.1.3/sweetalert-dev.min.js"></script>
     <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../../static/css/topic_index.css">
 </head>
@@ -37,12 +39,13 @@
                                     {% else %}
                                         {% set cls = '' %}
                                     {% endif %}
-                                    <li class=" tabPane {{  cls }}"><a href="/topic?board_id={{ b.id }}">{{ b.title }}</a></li>
+                                    <li class=" tabPane {{  cls }}"><a class="tab-a"href="/topic?board_id={{ b.id }}">{{ b.title }}</a></li>
                                 {% endfor %}
                                 {#  管理员有添加板块按钮 #}
                                 {% if admin == true  %}
-                                    <li class="board-add">添加</li>
+                                    <li class="board-add">添加板块</li>
                                 {% endif %}
+                                    <li class="topic-add">我要发帖</li>
                             </ul>
                             <div class="tab-content">
                                 {% for b in topics %}

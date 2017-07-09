@@ -3,7 +3,7 @@ const express = require('express')
 const Board = require('../models/board')
 const Model = Board
 const { log } = require('../utils')
-const { currentUser, loginRequired, adminRequired } = require('./routes/main')
+const { currentUser, loginRequired, adminRequired } = require('../routes/main')
 
 // 使用 express.Router 可以创建模块化的路由
 // 类似我们以前实现的形式
@@ -30,8 +30,10 @@ main.get('/new', (request, response) => {
 
 main.post('/add', (request, response) => {
     const form = request.body
+    console.log('form',request.body)
     const m = Model.create(form)
-    response.redirect('/board')
+    const all = Model.all()
+    response.send(JSON.stringify({board: all}))
 })
 
 main.get('/delete/:id', loginRequired, (request, response) => {

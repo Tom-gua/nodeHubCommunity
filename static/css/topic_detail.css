@@ -1,13 +1,23 @@
 body{
-    background-color: #b4daf0;
-    background-image: url("../images/weibo-background.png");
-    background-repeat: repeat-x;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.main{
+    position: relative;
+    overflow-y: auto;
+    min-width: 100%;
+    min-height: 100%;
+    background-size: 100% 100%;
+    background-image: url("../images/topic_back.jpg");
+    /*background-repeat: repeat-x;*/
     background-position: center 0;
 }
 .main .gua-word{
-    background: rgba(0,0,0,0.5);
+    padding: 0.5%;
+    background: rgba(0,0,0,0.4);
     border-radius: 4px;
-    margin: 0 30px 0 30px;
+    margin: 20px 30px 0 30px;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -19,9 +29,8 @@ body{
     border-radius: 4px;
     position: relative;
     height: 100%;
-    width: 95%;
     margin: 10px 30px 0 30px;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.4);
 }
 .gua-word img{
     position: relative;

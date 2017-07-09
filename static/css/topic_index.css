@@ -350,13 +350,33 @@ body{
 }
 .board-add{
     position: absolute;
+    right: 100px;
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 0 10px 0 10px;
+}
+.topic-add{
+    position: absolute;
     right: 10px;
     border: 1px solid white;
     border-radius: 4px;
     padding: 0 10px 0 10px;
 }
+.topic-add:hover{
+    cursor: pointer;
+}
 .topic_updateTime{
     position: absolute;
     right: -20px;
+}
+.currentUser{
+    position: absolute !important;
+    bottom: 20%;
+}
+.img-circle{
+    position: absolute;
+    transform: translate(-50%, -100%);
+    top: 50%;
+    left: 50%;
 }
 
