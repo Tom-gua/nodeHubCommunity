@@ -39,6 +39,7 @@
                     <div class="topicContent">{{topic.content}}</div>
                 </div>
         </div>
+        {% if topic.replies().length >  0  %}
         <div class="topicComments">
             <div class="commentBodys">
                 {% for r in topic.replies() %}
@@ -64,6 +65,7 @@
                 {% endfor %}
             </div>
         </div>
+        {% endif %}
         <div class="addComment">
             <form action="/reply/add?test=1" method="post">
                 <input type="hidden" name="topic_id" value="{{ topic.id }}">
