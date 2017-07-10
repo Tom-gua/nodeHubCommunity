@@ -70,6 +70,33 @@ class Topic extends Model{
             return obj
         }
     }
+    static update(form={}) {
+        console.log('form',form)
+        const id = Number(form.id)
+        const m = this.get(id)
+        const keys = this.frozenKeys()
+        Object.keys(form).forEach((k) => {
+            if (!keys.includes(k)) {
+                m[k] = form[k]
+            }
+        })
+        m.ut = Date.now()
+        console.log('m', m)
+        m.save()
+        return m
+    }
+
+    static frozenKeys() {
+        // 保证了这些内容不会被修改
+        const l = [
+            "user_id",
+            "board_id",
+            'id',
+            "view",
+            'ct',
+        ]
+        return l
+    }
 
 }
 

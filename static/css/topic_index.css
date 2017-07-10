@@ -239,6 +239,7 @@ body{
     margin-left: 30px;
 }
 .gua-word{
+    padding: 10px;
     background: rgba(0,0,0,0.5);
     display: flex;
     float: right;
@@ -285,7 +286,7 @@ body{
     cursor: pointer;
 }
 .search-form input{
-    margin-left: -124%;
+    margin-left: -100%;
     padding: 3px 5px 3px 22px;
     color: #666;
     border: 0;
@@ -385,5 +386,17 @@ body{
     transform: translate(-50%, -100%);
     top: 50%;
     left: 50%;
+}
+.delete-image,.edit-image{
+    margin-left: 40px;
+    vertical-align: text-bottom;
+    width: 25px;
+    height: 25px;
+}
+.delete-image{
+    margin-left: 10px;
+}
+.delete-image:hover,.edit-image:hover{
+    cursor: pointer;
 }
 

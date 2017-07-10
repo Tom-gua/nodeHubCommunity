@@ -15,18 +15,42 @@ const requestNewTopic = () => {
 
 const clickTargetByClass = (className) => {
     $(`.${className}`).on('click', function(e) {
-        var id = e.target.dataset.id
-        if(!id){
-            id = e.target.parentNode.dataset.id
+        if(e.target.classList.contains('delete-image')){
+            var id = e.target.dataset.id
+            swal({
+                    title: "Are you sure?",
+                    text: "You will not be able to recover this imaginary file!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it!",
+                    closeOnConfirm: false
+                },
+                function(){
+                    var request = {
+                        url: `/topic/delete/${id}`,
+                        type: 'GET',
+                        contentType: 'application/json',
+                        success: function() {
+                            swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                        }
+                    }
+                    $.ajax(request)
+                });
+        }else {
+            var id = e.target.dataset.id
+            if(!id){
+                id = e.target.parentNode.dataset.id
+            }
+            // 请求到详情页面
+            requestTopicDetailById(id)
         }
-        // 请求到详情页面
-        requestTopicDetailById(id)
     })
 }
 
 const clickAddTopic = () => {
     $(".topic-add").on('click', function(e) {
-        requestNewTopic()
+            requestNewTopic()
     })
 }
 // const requestAllBoard = () => {

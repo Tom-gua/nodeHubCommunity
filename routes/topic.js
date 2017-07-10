@@ -112,7 +112,7 @@ topic.get('/delete/:id', loginRequired, (request, response) => {
     // 根据 id 删除 topic, remove 方法顺便返回了 topic 这个 model,
     // 有些场景下是需要使用的
     const t = Model.remove(id)
-    response.redirect('/todo')
+    response.send({status:'ok'})
 })
 
 topic.get('/edit/:id', (request, response) => {
@@ -121,13 +121,16 @@ topic.get('/edit/:id', (request, response) => {
     const args = {
         topic: m,
     }
-    response.render('todo/edit.html', args)
+    response.render('topic/edit.html', args)
 })
 
 topic.post('/update', (request, response) => {
     const form = request.body
     const m = Model.update(form)
-    response.redirect('/todo')
+    const args = {
+        topic: m,
+    }
+    response.render('topic/edit.html', args)
 })
 
 module.exports = topic

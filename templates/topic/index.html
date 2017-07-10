@@ -57,6 +57,12 @@
                                         {% endif %}
                                 <div class="tab-pane {{ cls }} topicItem" id=`tab{{b.id}}` data-id="{{b.id}}">
                                     <div class="topic_title">{{b.title}}</div>
+                                    {% if user.id !== -1%}
+                                    <a href="/topic/edit/{{b.id}}"><img class="edit-image" data-id="{{b.id}}" src="../../static/images/edit.png"/></a>
+                                    {% endif %}
+                                    {% if admin === true  %}
+                                        <img class="delete-image" data-id="{{b.id}}" src="../../static/images/delete.png"/>
+                                    {% endif %}
                                     <a class="topic_updateTime">编辑于 {{b.ut | formattedTime}}</a>
                                 </div>
                                     {% endif %}
