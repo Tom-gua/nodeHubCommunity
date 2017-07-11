@@ -39,12 +39,11 @@
                                     {% else %}
                                         {% set cls = '' %}
                                     {% endif %}
-                                    <li class=" tabPane {{  cls }}"><a class="tab-a"href="/topic?board_id={{ b.id }}">{{ b.title }}</a></li>
+                                    <li class=" tabPane {{  cls }}">
+                                        <a class="tab-a"href="/topic?board_id={{ b.id }}">{{ b.title }}</a>
+                                    </li>
                                 {% endfor %}
                                 {#  管理员有添加板块按钮 #}
-                                {% if admin == true  %}
-                                    <li class="board-add">添加板块</li>
-                                {% endif %}
                                     <li class="topic-add">我要发帖</li>
                             </ul>
                             <div class="tab-content">
@@ -57,7 +56,7 @@
                                         {% endif %}
                                 <div class="tab-pane {{ cls }} topicItem" id=`tab{{b.id}}` data-id="{{b.id}}">
                                     <div class="topic_title">{{b.title}}</div>
-                                    {% if user.id !== -1%}
+                                    {% if user.id === b.user().id%}
                                     <a href="/topic/edit/{{b.id}}"><img class="edit-image" data-id="{{b.id}}" src="../../static/images/edit.png"/></a>
                                     {% endif %}
                                     {% if admin === true  %}
@@ -69,14 +68,11 @@
                                     {% if board_id === 1 %}
                                         {% set cls = 'active' %}
                                         <div class="tab-pane {{ cls }} topicItem" id=`tab{{b.id}}` data-id="{{b.id}}">
-                                                <div class="topic_title">{{b.title}}</div>
-                                                <a class="topic_updateTime">编辑于 {{b.ut | formattedTime}}</a>
+                                            <div class="topic_title">{{b.title}}</div>
+                                            <a class="topic_updateTime">编辑于 {{b.ut | formattedTime}}</a>
                                         </div>
                                     {% endif %}
                                 {% endfor %}
-                            </div>
-                            <div class="pagination pagination-centered">
-
                             </div>
                         </div>
                     </div>
@@ -91,7 +87,11 @@
                 {% else %}
                     <img src="../../static/images/setting22.png" class="image-setting">
                     <img src="../../static/images/person.png" class="img-circle">
-                    <div class="person-message currentUser">当前用户: {{user.username}}</div>
+                    <div class="person-message currentUser">当前用户: {{user.username}}<br>
+                        {% if admin == true  %}
+                        <a href="/board">模块管理</a>
+                        {% endif %}
+                    </div>
                 {% endif %}
             </div>
             <div class="top-decoration hotTopic">

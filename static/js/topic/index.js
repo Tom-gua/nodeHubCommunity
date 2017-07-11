@@ -63,44 +63,11 @@ const clickAddTopic = () => {
 //     }
 //     $.ajax(request)
 // }
-const clickAddBoard = () => {
-    $(".board-add").on('click', function(e) {
-        swal({
-                title: "请输入要添加的板块!",
-                type: "input",
-                showCancelButton: true,
-                closeOnConfirm: true,
-                animation: "pop",
-                inputPlaceholder: "请输入板块的名字"
-            },
-            function(inputValue){
-                if (inputValue === false) {
-                    return false;
-                }
-                if (inputValue === "") {
-                    swal.showInputError("You need to write something!");
-                    return false
-                }
-                var s = {title: inputValue}
-                var request = {
-                    url: '/board/add',
-                    type: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify(s),
-                    success: function() {
-                        document.querySelector('.tab-a').click()
-                    }
-                }
-                $.ajax(request)
-            });
-    })
-}
+
 
 var bindClickAdd = () => {
     // 绑定发帖事件
     clickAddTopic()
-    // 绑定添加板块事件
-    clickAddBoard()
 }
 var bindClickTopic = () => {
     clickTargetByClass('topicItem')

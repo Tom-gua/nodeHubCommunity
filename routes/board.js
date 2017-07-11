@@ -13,9 +13,7 @@ const tokens = []
 
 main.get('/', adminRequired, (request, response) => {
     const ms = Model.all()
-    log('debug ms', ms)
     const token = Math.random()
-    log('debug token', token)
     tokens.push(token)
     const args = {
         boards: ms,
@@ -32,8 +30,8 @@ main.post('/add', (request, response) => {
     const form = request.body
     console.log('form',request.body)
     const m = Model.create(form)
-    const all = Model.all()
-    response.send(JSON.stringify({board: all}))
+    // const all = Model.all()
+    response.redirect('/board')
 })
 
 main.get('/delete/:id', loginRequired, (request, response) => {

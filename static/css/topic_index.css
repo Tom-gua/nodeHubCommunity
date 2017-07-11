@@ -313,6 +313,7 @@ body{
     left: 10%;
     position: relative;
     width: 80%;
+    bottom: 10px;
 }
 
 .person a, .person div{
@@ -340,6 +341,9 @@ body{
     overflow: hidden;
     font-size: 20px;
     margin-top: 15px;
+}
+.currentUser a{
+    padding: 20px;
 }
 .community .hotTopicTitle{
     width: 100% !important;
@@ -388,13 +392,13 @@ body{
     left: 50%;
 }
 .delete-image,.edit-image{
-    margin-left: 40px;
     vertical-align: text-bottom;
     width: 25px;
     height: 25px;
 }
 .delete-image{
     margin-left: 10px;
+    margin-right: 30px;
 }
 .delete-image:hover,.edit-image:hover{
     cursor: pointer;
