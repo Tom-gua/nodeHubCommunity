@@ -32,7 +32,7 @@ const clickTargetByClass = (className) => {
                         type: 'GET',
                         contentType: 'application/json',
                         success: function() {
-                            swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                            window.location.reload()
                         }
                     }
                     $.ajax(request)

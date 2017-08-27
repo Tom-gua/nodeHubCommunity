@@ -40,10 +40,9 @@
                                         {% set cls = '' %}
                                     {% endif %}
                                     <li class=" tabPane {{  cls }}">
-                                        <a class="tab-a"href="/topic?board_id={{ b.id }}">{{ b.title }}</a>
+                                        <a class="tab-a" href="/topic?board_id={{ b.id }}">{{ b.title }}</a>
                                     </li>
                                 {% endfor %}
-                                {#  管理员有添加板块按钮 #}
                                     <li class="topic-add">我要发帖</li>
                             </ul>
                             <div class="tab-content">

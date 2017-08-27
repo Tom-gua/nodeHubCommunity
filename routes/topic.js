@@ -98,7 +98,7 @@ topic.post('/add', (request, response) => {
     form.user_id = u.id
     const m = Model.create(form)
     // 重定向到 topic 首页
-    response.redirect('/topic')
+    response.redirect(`/topic?board_id=${form.board_id}`)
 })
 
 topic.get('/delete/:id', loginRequired, (request, response) => {
@@ -127,10 +127,11 @@ topic.get('/edit/:id', (request, response) => {
 topic.post('/update', (request, response) => {
     const form = request.body
     const m = Model.update(form)
-    const args = {
-        topic: m,
-    }
-    response.render('topic/edit.html', args)
+    // const args = {
+    //     topic: m,
+    // }
+    // console.log('m',request.form)
+    response.redirect(`/topic?board_id=${m.board_id}`)
 })
 
 module.exports = topic

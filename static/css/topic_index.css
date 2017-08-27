@@ -145,11 +145,13 @@ body{
     border-radius: 5px;
     color: #ffffff;
     display: flex;
-    margin: 10px 0 10px 10px ;
     width: 97%;
     position: absolute;
     justify-content: flex-start;
     align-items: center;
+}
+.sweet-alert{
+    background: lightyellow;
 }
 .tab-pane{
     padding: 10px;
@@ -342,9 +344,9 @@ body{
     font-size: 20px;
     margin-top: 15px;
 }
-.currentUser a{
-    padding: 20px;
-}
+/*.currentUser a{*/
+    /*padding: 20px;*/
+/*}*/
 .community .hotTopicTitle{
     width: 100% !important;
     padding: 4px;
