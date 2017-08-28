@@ -17,15 +17,16 @@ const clickTargetByClass = (className) => {
                     closeOnConfirm: false
                 },
                 function(){
-                    // var request = {
-                    //     url: `/topic/delete/${id}`,
-                    //     type: 'GET',
-                    //     contentType: 'application/json',
-                    //     success: function() {
-                    //         window.location.reload()
-                    //     }
-                    // }
-                    // $.ajax(request)
+                    var request = {
+                        url: `/reply/delete/${id}`,
+                        type: 'GET',
+                        contentType: 'application/json',
+                        success: function(res) {
+                            console.log('res',res)
+                            // window.location.reload()
+                        }
+                    }
+                    $.ajax(request)
                 });
         }
     })

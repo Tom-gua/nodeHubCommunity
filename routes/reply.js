@@ -19,22 +19,18 @@ reply.post('/add', loginRequired, (request, response) => {
     response.redirect(`/topic/detail/${m.topic_id}`)
 })
 
-// reply.get('/detail/:id', (request, response) => {
-//     const id = Number(request.params.id)
-//     log('id',id)
-//     // const t = Topic.findOne('id', id)
-//     // t.views += 1
-//     // t.save()
-//     // const args = {
-//     //     topic: t,
-//     // }
-//     const user = currentUser(request)
-//     const m = Reply.get(id)
-//     const args = {
-//         topic: m,
-//         user: user,
-//     }
-//     response.render('topic/detail.html', args)
-// })
+reply.get('/delete/:id', loginRequired, (request, response) => {
+    // :id 这个方式是动态路由, 意思是这个路由可以匹配一系列不同的路由
+    // 动态路由是现在流行的路由设计方案
+    // 动态路由的参数通过 request.params 获取
+    // Model.remove 的参数是一个数字, 所以这里需要转一下
+    // 注意, 这里很容易出现的 bug 是传一个字符串 '1', 结果取出来的是 null
+    // 这种类型的问题, 由调用方自己保证
+    const id = Number(request.params.id)
+    // 根据 id 删除 topic, remove 方法顺便返回了 topic 这个 model,
+    // 有些场景下是需要使用的
+    const t = Reply.remove(id)
+    response.send({status:'success', message:'删除成功'})
+})
 
 module.exports = {reply}
