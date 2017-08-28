@@ -61,9 +61,11 @@ app.use((request, response, next) => {
 const index = require('./routes/index')
 const topic = require('./routes/topic')
 const {board} = require('./routes/board')
+const {reply} = require('./routes/reply')
 app.use('/', index)
 app.use('/topic', topic)
 app.use('/board', board)
+app.use('/reply', reply)
 
 // 把逻辑放在单独的函数中, 这样可以方便地调用
 // 指定了默认的 host 和 port, 因为用的是默认参数, 当然可以在调用的时候传其他的值

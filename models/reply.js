@@ -13,7 +13,6 @@ class Reply extends Model{
         this.user_id = form.user_id || ''
         this.topic_id = Number(form.topic_id || -1)
     }
-
     user() {
         const User = require('./user')
         const u = User.get(this.user_id)

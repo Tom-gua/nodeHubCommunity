@@ -118,8 +118,9 @@ body{
 }
 .commentTime{
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+    flex-direction: column;
+    /* justify-content: flex-end; */
+    align-items: flex-end;
 }
 .commentBodys{
     margin: 20px;
@@ -132,9 +133,16 @@ body{
 .commentAll:last-child{
     border-bottom: none;
 }
-.commentAll:hover{
-    cursor: pointer;
-    background: white;
-    color: black;
-    border-bottom: 2px solid white;
+.commentdelete {
+    color: red;
 }
+.commentdelete button:hover {
+    /*background: white;*/
+    cursor: pointer;
+}
+/*.commentAll:hover{*/
+    /*cursor: pointer;*/
+    /*background: white;*/
+    /*color: black;*/
+    /*border-bottom: 2px solid white;*/
+/*}*/
