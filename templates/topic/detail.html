@@ -41,9 +41,10 @@
                     <div class="topicContent">{{topic.content}}</div>
                 </div>
         </div>
-        {% if topic.replies().length >  0  %}
+        <div>
         <div class="topicComments">
             <div class="commentBodys">
+                {% if topic.replies().length >  0  %}
                 {% for r in topic.replies() %}
                 <div class="commentAll">
                     <div class="commentUser">
@@ -73,12 +74,13 @@
             </div>
         </div>
         {% endif %}
-        <div class="addComment">
-            <form action="/reply/add" method="post">
+        </div>
+        <div class="addComment" data-id="{{topic.id}}">
+            <!--<form action="/reply/add" method="post">-->
                 <input type="hidden" name="topic_id" value="{{ topic.id }}">
-                <textarea name="content"></textarea>
-                <button class="btn btn-danger">添加回复</button>
-            </form>
+                <textarea name="content" class="content"></textarea>
+                <button class="btn btn-danger addReply">添加回复</button>
+            <!--</form>-->
         </div>
     </div>
 </div>

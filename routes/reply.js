@@ -1,6 +1,7 @@
 const express = require('express')
 
 const Reply = require('../models/reply')
+const Topic = require('../models/topic')
 const Model = Reply
 const { log } = require('../utils')
 const { currentUser, loginRequired, } = require('../routes/main')
@@ -9,6 +10,14 @@ const { currentUser, loginRequired, } = require('../routes/main')
 // 类似我们以前实现的形式
 const reply = express.Router()
 
+const topicsByBoard_id = (board_id) => {
+    if(board_id === 1){
+        // 全部
+        return Topic.all(-1)
+    }else {
+        return Topic.allList(board_id)
+    }
+}
 reply.post('/add', loginRequired, (request, response) => {
     const form = request.body
     const u = currentUser(request)
@@ -16,7 +25,13 @@ reply.post('/add', loginRequired, (request, response) => {
         user_id: u.id
     }
     const m = Reply.create(form, kwargs)
-    response.redirect(`/topic/detail/${m.topic_id}`)
+    const ms = Reply.find('topic_id', m.topic_id)
+    const user = currentUser(request)
+    const args = {
+        user: user,
+        topics: ms,
+    }
+    response.send({status:'success', message:'添加成功', data: args})
 })
 
 reply.get('/delete/:id', loginRequired, (request, response) => {
@@ -29,8 +44,15 @@ reply.get('/delete/:id', loginRequired, (request, response) => {
     const id = Number(request.params.id)
     // 根据 id 删除 topic, remove 方法顺便返回了 topic 这个 model,
     // 有些场景下是需要使用的
+    const reply = Reply.findOne('id', id)
     const t = Reply.remove(id)
-    response.send({status:'success', message:'删除成功'})
+    const ms = Reply.find('topic_id', reply.topic_id)
+    const user = currentUser(request)
+    const args = {
+        user: user,
+        topics: ms,
+    }
+    response.send({status:'success', message:'删除成功', data: args})
 })
 
 module.exports = {reply}
