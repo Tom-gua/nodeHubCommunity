@@ -2,6 +2,7 @@ const express = require('express')
 
 const Reply = require('../models/reply')
 const Topic = require('../models/topic')
+const User = require('../models/user')
 const Model = Reply
 const { log } = require('../utils')
 const { currentUser, loginRequired, } = require('../routes/main')
@@ -26,6 +27,11 @@ reply.post('/add', loginRequired, (request, response) => {
     }
     const m = Reply.create(form, kwargs)
     const ms = Reply.find('topic_id', m.topic_id)
+    // 这里需要遍历m 找到username
+    ms.forEach((item) => {
+        const u = item.user()
+        item.username = u.username
+    })
     const user = currentUser(request)
     const args = {
         user: user,
@@ -47,6 +53,11 @@ reply.get('/delete/:id', loginRequired, (request, response) => {
     const reply = Reply.findOne('id', id)
     const t = Reply.remove(id)
     const ms = Reply.find('topic_id', reply.topic_id)
+    // 这里需要遍历m 找到username
+    ms.forEach((item) => {
+        const u = item.user()
+        item.username = u.username
+    })
     const user = currentUser(request)
     const args = {
         user: user,

@@ -47,7 +47,7 @@ const topicsByBoard_id = (board_id) => {
     }
 }
 topic.get('/', (request, response) => {
-    const board_id = Number(request.query.board_id || -1)
+    const board_id = Number(request.query.board_id || 1)
     const ms = topicsByBoard_id(board_id)
     const boards = Board.all()
     const user = currentUser(request)

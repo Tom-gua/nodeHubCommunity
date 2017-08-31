@@ -89,6 +89,8 @@
                     <div class="person-message currentUser">当前用户: {{user.username}}<br>
                         {% if admin == true  %}
                         <a href="/board">模块管理</a>
+                        {% else %}
+                        <a class="myTopic">我的帖子</a>
                         {% endif %}
                     </div>
                 {% endif %}

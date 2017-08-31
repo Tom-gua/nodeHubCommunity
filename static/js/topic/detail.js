@@ -3,6 +3,9 @@
  */
 // 格式化时间
 // 格式化时间的函数
+var log = function() {
+    console.log.apply(console, arguments)
+}
 const formattedTime = (ts) => {
     const d = new Date(ts)
     const year = d.getFullYear()
@@ -31,7 +34,7 @@ const insertRepliesBydata = (data) => {
                         <div>
                             <a class="user_avatar">
                                 <!--<img src="/user/avatar/{{ r.user().avatar }}" title="{{ r.user().username }}"/>-->
-                                ${data.user.username}
+                                ${item.username}
                             </a>
                             <span>
                             ${index + 1}楼
@@ -51,6 +54,10 @@ const insertRepliesBydata = (data) => {
         `
     })
     $('.commentBodys')[0].innerHTML = html
+}
+const clearReplyContent = () => {
+    // console.log('value',$('.content').val())
+    $('.content')[0].value = ''
 }
 const clickDeleteByClass = (className) => {
     $(`.${className}`).on('click', function(e) {
@@ -99,6 +106,8 @@ const clickTarget = () => {
                             // window.location.reload()
                             // 获取到数据插入到文档中
                             insertRepliesBydata(res.data)
+                            // 清空数据
+                            clearReplyContent()
                         }
             }
             $.ajax(request)
@@ -110,9 +119,15 @@ const bindClickDelete = () => {
 const bindClickAddReply = () => {
     clickTarget()
 }
+const clickMyTopic = () => {
+    $('.myTopic').on('click', function(e) {
+        log('e', e.target)
+    })
+}
 var bindEvents = () => {
     bindClickDelete()
     bindClickAddReply()
+    clickMyTopic()
 }
 
 var main = () => {
