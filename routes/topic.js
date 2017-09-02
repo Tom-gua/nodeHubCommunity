@@ -47,7 +47,7 @@ const topicsByBoard_id = (board_id) => {
     }
 }
 topic.get('/', (request, response) => {
-    const board_id = Number(request.query.board_id || 1)
+    const board_id = Number(request.query.board_id || -1)
     const ms = topicsByBoard_id(board_id)
     const boards = Board.all()
     const user = currentUser(request)
@@ -112,7 +112,7 @@ topic.get('/delete/:id', loginRequired, (request, response) => {
     // 根据 id 删除 topic, remove 方法顺便返回了 topic 这个 model,
     // 有些场景下是需要使用的
     const t = Model.remove(id)
-    response.send({status:'ok'})
+    response.redirect(`/topic/myTopic`)
 })
 
 topic.get('/edit/:id', (request, response) => {
@@ -132,6 +132,20 @@ topic.post('/update', (request, response) => {
     // }
     // console.log('m',request.form)
     response.redirect(`/topic?board_id=${m.board_id}`)
+})
+
+// 我的帖子的接口
+topic.get('/myTopic', (request, response) => {
+    const u = currentUser(request)
+    const ms = Topic.find('user_id', u.id)
+    const res = {
+        status:'success',
+        message:'成功',
+        data:{
+            myTopic: ms,
+        }
+    }
+    response.send(JSON.stringify(res))
 })
 
 module.exports = topic

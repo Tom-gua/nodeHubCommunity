@@ -27,8 +27,17 @@ body{
     width: 100%;
 }
 .editor_buttons{
-    text-align: center;
+    display: flex;
+    justify-content: space-around;
 }
-.editor_buttons input{
-    width: 80%;
+.editor_buttons input, .editor_buttons button{
+    flex: 0 0 40%;
 }
+.cancel {
+    display: flex;
+}
+.cancel a{
+    color: white!important;
+    flex: 0 0 100%;
+}
+

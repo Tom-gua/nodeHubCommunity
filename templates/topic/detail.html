@@ -71,15 +71,20 @@
                     </div>
                 </div>
                 {% endfor %}
+                {% else %}
+                <div>还没有任何人评论</div>
+                {% endif %}
             </div>
         </div>
-        {% endif %}
         </div>
         <div class="addComment" data-id="{{topic.id}}">
             <!--<form action="/reply/add" method="post">-->
                 <input type="hidden" name="topic_id" value="{{ topic.id }}">
-                <textarea name="content" class="content"></textarea>
-                <button class="btn btn-danger addReply">添加回复</button>
+                <textarea name="content" id="content"></textarea>
+                <div class="add-reply">
+                    <button type="button" class="btn btn-primary cancel"><a href="/topic?board_id=1">返回</a></button>
+                    <button class="btn btn-danger addReply">添加回复</button>
+                </div>
             <!--</form>-->
         </div>
     </div>

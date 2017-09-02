@@ -90,8 +90,8 @@ const clickDeleteByClass = (className) => {
 }
 const clickTarget = () => {
     $('.addReply').on('click', function(e) {
-            var id = $('.addReply').parent()[0].dataset.id
-            var text = $('.addReply').siblings('.content')[0].value
+            var id = $('.addComment')[0].dataset.id
+            var text = $('#content')[0].value
             const data = {
                 topic_id : id,
                 content: text,
@@ -119,15 +119,10 @@ const bindClickDelete = () => {
 const bindClickAddReply = () => {
     clickTarget()
 }
-const clickMyTopic = () => {
-    $('.myTopic').on('click', function(e) {
-        log('e', e.target)
-    })
-}
+
 var bindEvents = () => {
     bindClickDelete()
     bindClickAddReply()
-    clickMyTopic()
 }
 
 var main = () => {

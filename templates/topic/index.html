@@ -14,7 +14,7 @@
     <div class="head">
         <div class="head-body">
             <div class="gua-word">
-                <a href="/topic"><img src="../../static/images/javascript_1.png" ></a>
+                <a href="/topic?board_id=1"><img src="../../static/images/javascript_1.png" ></a>
                 <form class="navbar-search pull-left search-form">
                     <input type="text" class="search-query" placeholder="Search">
                 </form>
@@ -52,13 +52,13 @@
                                             {% set cls = 'active' %}
                                         {% else %}
                                 ￼              {% set cls = '' %}
-                                        {% endif %}
+                                    {% endif %}
                                 <div class="tab-pane {{ cls }} topicItem" id=`tab{{b.id}}` data-id="{{b.id}}">
                                     <div class="topic_title">{{b.title}}</div>
-                                    {% if user.id === b.user().id%}
-                                    <a href="/topic/edit/{{b.id}}"><img class="edit-image" data-id="{{b.id}}" src="../../static/images/edit.png"/></a>
-                                    {% endif %}
-                                    {% if admin === true  %}
+                                    <!--{% if user.id === b.user().id%}-->
+                                    <!--<a href="/topic/edit/{{b.id}}"><img class="edit-image" data-id="{{b.id}}" src="../../static/images/edit.png"/></a>-->
+                                    <!--{% endif %}-->
+                                    {% if admin === true %}
                                         <img class="delete-image" data-id="{{b.id}}" src="../../static/images/delete.png"/>
                                     {% endif %}
                                     <a class="topic_updateTime">编辑于 {{b.ut | formattedTime}}</a>

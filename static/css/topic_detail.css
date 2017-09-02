@@ -110,7 +110,7 @@ body{
 }
 .addComment button{
     left: 10%;
-    position: relative;
+    /*position: relative;*/
     width: 80%;
 }
 .addComment button:hover{
@@ -140,9 +140,23 @@ body{
     /*background: white;*/
     cursor: pointer;
 }
-/*.commentAll:hover{*/
-    /*cursor: pointer;*/
-    /*background: white;*/
-    /*color: black;*/
-    /*border-bottom: 2px solid white;*/
-/*}*/
+
+.add-reply{
+    position: relative;
+    width: 80%;
+    left: 10%;
+    top:5px;
+    display: flex;
+    justify-content: space-between;
+}
+.add-reply button {
+    flex: 0 0 40%;
+}
+.cancel{
+    display: flex;
+}
+.cancel a{
+    color: white !important;
+    flex: 0 0 100%;
+}
+
